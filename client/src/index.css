@@ -567,38 +567,63 @@ h3 { font-size: 1.3rem; }
   background: linear-gradient(160deg, #0d1e26 0%, #1a3545 60%, #1e5c6e 100%);
 }
 
+.landing__hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 32px;
+}
+
 .landing__eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold-light);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  opacity: 0.9;
 }
 
 .landing__title {
   font-family: var(--font-serif);
-  font-size: 3.2rem;
-  font-weight: 400;
-  color: #c4dce4;
-  line-height: 1.05;
-  margin-bottom: 20px;
+  font-size: 4rem;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1.0;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  letter-spacing: 0.02em;
 }
 
 .landing__copy {
-  font-size: 1rem;
-  color: rgba(196, 220, 228, 0.7);
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.8;
+  max-width: 340px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.landing__sub {
+  font-size: 0.88rem;
+  color: rgba(196, 220, 228, 0.65);
   line-height: 1.7;
-  max-width: 320px;
+  max-width: 300px;
 }
 
 .landing .btn-primary {
   background: var(--gold);
   color: white;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
 }
 
 .landing .btn-secondary {
-  border-color: rgba(196, 220, 228, 0.4);
-  color: rgba(196, 220, 228, 0.8);
+  border-color: rgba(196, 220, 228, 0.35);
+  color: rgba(196, 220, 228, 0.75);
+  font-size: 0.9rem;
 }
 
 .landing__actions {
