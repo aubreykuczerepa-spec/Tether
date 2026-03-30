@@ -20,7 +20,7 @@ export default function Connect() {
   async function handleJoin(e) {
     e.preventDefault()
     setError('')
-    if (code.trim().length < 4) return setError('Please enter your partner's invite code')
+    if (code.trim().length < 4) return setError("Please enter your partner's invite code")
 
     setLoading(true)
     try {
