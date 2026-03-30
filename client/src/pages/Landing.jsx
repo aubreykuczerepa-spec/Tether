@@ -7,12 +7,11 @@ export default function Landing() {
         <p className="landing__eyebrow">For you and the one you choose</p>
         <h1 className="landing__title">Tether</h1>
         <p className="landing__copy">
-          You'll remember it one way.<br />
-          They'll remember it another.<br />
-          The truth is somewhere beautiful in between.
+          Your love story, told in both your voices.<br />
+          Kept forever.
         </p>
         <p className="landing__sub">
-          Two voices. One story. A time capsule you'll open together for the rest of your lives.
+          Two entries. One combined story. A time capsule you'll open together for the rest of your lives.
         </p>
       </div>
 
