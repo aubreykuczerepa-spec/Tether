@@ -115,7 +115,7 @@ export default function NewEntry() {
           )}
 
           <div className="field field--large">
-            <label>{isQuickMemo ? 'What's on your mind?' : 'Your entry'}</label>
+            <label>{isQuickMemo ? "What's on your mind?" : 'Your entry'}</label>
             <textarea
               value={form.description}
               onChange={set('description')}
