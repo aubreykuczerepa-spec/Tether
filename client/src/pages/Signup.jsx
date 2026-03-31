@@ -49,7 +49,7 @@ export default function Signup() {
             type="text"
             value={form.name}
             onChange={set('name')}
-            placeholder="Aubrey"
+            placeholder="Your name"
             autoComplete="given-name"
           />
         </div>

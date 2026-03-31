@@ -12,11 +12,16 @@ async function requireAuth(req, res, next) {
     const { data: { user }, error } = await supabase.auth.getUser(token)
     if (error || !user) return res.status(401).json({ message: 'Unauthorized' })
 
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from('users')
       .select('*')
       .eq('id', user.id)
       .single()
+
+    if (profileError || !profile) {
+      console.error('Profile lookup failed for user', user.id, profileError?.message)
+      return res.status(503).json({ message: 'Account profile not found. Please sign out and sign back in.' })
+    }
 
     const { data: couple } = await supabase
       .from('couples')
@@ -24,7 +29,7 @@ async function requireAuth(req, res, next) {
       .or(`user_one_id.eq.${user.id},user_two_id.eq.${user.id}`)
       .single()
 
-    req.user = profile || { id: user.id, email: user.email }
+    req.user = profile
     req.couple = couple || null
     req.token = token
     next()

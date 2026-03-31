@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { api } from '../lib/api'
@@ -10,6 +10,13 @@ export default function Connect() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [loadingProfile, setLoadingProfile] = useState(!user?.invite_code)
+
+  useEffect(() => {
+    if (!user?.invite_code) {
+      refreshCouple().finally(() => setLoadingProfile(false))
+    }
+  }, [])
 
   async function copyCode() {
     await navigator.clipboard.writeText(user.invite_code).catch(() => {})
@@ -34,6 +41,10 @@ export default function Connect() {
     }
   }
 
+  if (loadingProfile) {
+    return <div className="spinner" style={{ marginTop: '40vh' }} />
+  }
+
   return (
     <div className="auth-page">
       <div>
@@ -46,8 +57,11 @@ export default function Connect() {
       <div>
         <p className="section-heading">Your invite code</p>
         <div className="invite-code-display">
-          <p className="invite-code-display__label">Share this with {user?.name?.split(' ')[0] && 'your partner'}</p>
-          <p className="invite-code-display__code">{user?.invite_code}</p>
+          <p className="invite-code-display__label">Share this with your partner</p>
+          {user?.invite_code
+            ? <p className="invite-code-display__code">{user.invite_code}</p>
+            : <p className="invite-code-display__label" style={{ color: 'var(--error, #c0392b)' }}>Could not load code — try refreshing</p>
+          }
         </div>
         <button className="btn btn-ghost" onClick={copyCode} style={{ marginBottom: 32 }}>
           {copied ? '✓ Copied' : 'Copy code'}
